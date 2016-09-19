@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minHeight="100dp"
+    android:minWidth="300dp"
+    android:background="@color/orangeColor"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_message"
+        android:textSize="20dp"
+        android:textColor="@color/whiteTextColor"
+        android:layout_marginLeft="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/close_dialog"
+        android:layout_marginLeft="110dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:background="@color/whiteTextColor"
+        android:textColor="@color/backgroundColor"
+        android:id="@+id/closeDialog"/>
+
+</LinearLayout>

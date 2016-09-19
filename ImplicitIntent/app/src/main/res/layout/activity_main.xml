@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="assignment.cmpe277.implicitintent.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/activity_title"
+                android:textAllCaps="false"
+                android:text="@string/app_name"
+                android:textColor="@color/whiteTextColor"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:paddingTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/url_label"
+                android:textColor="@color/whiteTextColor"
+                android:textSize="20dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="25dp"
+                android:inputType="textWebEmailAddress"
+                android:textAllCaps="false"
+                android:lines="1"
+                android:background="@color/whiteTextColor"
+                android:id="@+id/url"
+                android:imeOptions="actionDone"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/launch_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:background="@color/yellowBackground"
+            android:onClick="launch"/>
+
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/yellowBackground"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_label"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteTextColor"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:inputType="phone"
+                android:background="@color/whiteTextColor"
+                android:layout_marginLeft="15dp"
+                android:lines="1"
+                android:digits="0123456789+"
+                android:id="@+id/phone"
+                android:imeOptions="actionDone"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/ring_button"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:background="@color/redBackground"
+            android:onClick="ring"/>
+        <View
+            android:layout_marginTop="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/yellowBackground"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/closeApp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:background="@color/blackColor"
+            android:textColor="@color/whiteTextColor"
+            android:onClick="closeApp"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
