@@ -18,14 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FarmManagerActivity"
-            android:label="@string/title_activity_farm_manager"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".FarmMaintenanceActivity"
-            android:label="@string/title_activity_farm_maintenance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

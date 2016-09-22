@@ -4,14 +4,6 @@
     <string name="temp_humid_title">Temperature &amp; Humidity</string>
     <string name="temperatureLabel">Temperature (F)</string>
     <string name="humidityLabel">Humidity (%)</string>
-    <string name="farm_manager_title">Farm Manager</string>
-    <string name="turn_fan_cond">Temperature (F) &gt;70 &amp; Temperature (F) &lt; 90</string>
-    <string name="turn_fan_sprinkler">Temperature (F) &gt;90 &amp; Temperature (F) &lt; 125</string>
-    <string name="turn_fan_btn">Turn FAN</string>
-    <string name="turn_fan_sprinkler_btn">Turn FAN &amp; Sprinkler</string>
-    <string name="farm_maintenance_title">Farm Maintenance</string>
     <string name="set_btn">Set</string>
     <string name="cancel_btn">Cancel</string>
-    <string name="title_activity_farm_manager">FarmManagerActivity</string>
-    <string name="title_activity_farm_maintenance">FarmMaintenanceActivity</string>
 </resources>
