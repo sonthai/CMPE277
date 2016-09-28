@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">DataStorageApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="save_btn">Save</string>
+    <string name="cancel_btn">Cancel</string>
+
+    <!-- Main Activity -->
+    <string name="main_activity_title">Android Data Storage Sample</string>
+    <string name="preferences_btn">Preferences</string>
+    <string name="sqlite_btn">SQLite</string>
+    <string name="close_btn">Close</string>
+
+    <!-- SQLite View -->
+    <string name="sqlite_activity_title">SQLite View</string>
+    <string name="blog_message_label">Blog Message</string>
+
+    <!-- Preferences View -->
+    <string name="preferences_activity_title">Preferences View</string>
+    <string name="android_book_name_label">Android Book Name</string>
+    <string name="android_book_author_label">Android Book Author</string>
+    <string name="description_label">Description</string>
+    <string name="title_activity_preferences">PreferencesActivity</string>
+    <string name="title_activity_sqlite">SQLiteActivity</string>
+</resources>
