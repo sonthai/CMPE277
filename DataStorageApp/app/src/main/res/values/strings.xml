@@ -13,6 +13,7 @@
     <!-- SQLite View -->
     <string name="sqlite_activity_title">SQLite View</string>
     <string name="blog_message_label">Blog Message</string>
+    <string name="save_success_msg">Message saved successfully!</string>
 
     <!-- Preferences View -->
     <string name="preferences_activity_title">Preferences View</string>

@@ -1,6 +1,13 @@
 package servicesapp.android.cmpe277.servicesapp;
 
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,16 +16,23 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     EditText pdf1, pdf2, pdf3, pdf4, pdf5;
+    IntentFilter intentFilter;
+    private MyService serviceBinder;
+    Intent i;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         pdf3 = (EditText) findViewById(R.id.pdf3_id);
         pdf4 = (EditText) findViewById(R.id.pdf4_id);
         pdf5 = (EditText) findViewById(R.id.pdf5_id);
+
+
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("FILE_DOWNLOADED_ACTION");
+        registerReceiver(intentReceiver, intentFilter);
+
+
     }
 
     public void startDownload(View v) {
@@ -42,5 +63,47 @@ public class MainActivity extends AppCompatActivity {
         String url3 = pdf3.getText().toString();
         String url4 = pdf4.getText().toString();
         String url5 = pdf5.getText().toString();
+
+        Intent intent = new Intent(getBaseContext(), MyService.class);
+        try {
+            //URL[] urls = new URL[] {new URL(url1), new URL(url2), new URL(url3), new URL(url4), new URL(url5)};
+            URL [] urls = new URL[] {
+                    new URL("https://www.cisco.com/web/about/ac79/docs/innov/IoE.pdf"),
+                    new URL("http://www.cisco.com/web/about/ac79/docs/innov/IoE_Economy.pdf"),
+                    new URL("http://www.cisco.com/web/strategy/docs/gov/everything-for-cities.pdf"),
+                    new URL("http://www.cisco.com/web/offer/gist_ty2_asset/Cisco_2014_ASR.pdf"),
+                    new URL ("http://www.cisco.com/web/offer/emear/38586/images/Presentations/P3.pdf")
+            };
+            intent.putExtra("URLs", urls);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        startService(intent);
+
     }
+/*
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            serviceBinder = ((MyService.MyBinder) service).getService();
+            try {
+                //serviceBinder.urls = [];
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            serviceBinder = null;
+        }
+    };
+*/
+    private BroadcastReceiver  intentReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(getBaseContext(), "File downloaded!",
+                    Toast.LENGTH_LONG).show();
+        }
+    };
 }

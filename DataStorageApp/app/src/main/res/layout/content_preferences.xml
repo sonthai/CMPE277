@@ -91,6 +91,7 @@
                 android:layout_height="100dp"
                 android:background="@color/whiteColor"
                 android:gravity="top"
+                android:id="@+id/description"
                 android:layout_marginLeft="15dp"
                 android:maxLength="70"
                 android:hint="Max 255 characters only"/>

@@ -53,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:gravity="top"
+                android:id="@+id/blog_msg_id"
                 android:background="@color/whiteColor"
                 android:layout_marginLeft="15dp"
                 android:hint="Maximum 255 characters only"

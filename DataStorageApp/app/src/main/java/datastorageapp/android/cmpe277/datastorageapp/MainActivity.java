@@ -7,6 +7,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -25,6 +28,28 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            InputStream in = openFileInput(PreferencesActivity.STORE_PREFERENCES);
+            if (in !=null) {
+                InputStreamReader tmp = new InputStreamReader(in);
+                BufferedReader reader =  new BufferedReader(tmp);
+                String str;
+                StringBuilder buf = new StringBuilder();
+                while ((str = reader.readLine()) != null) {
+                    buf.append(str + "\n");
+                }
+                in.close();
+                TextView savePref = (TextView) findViewById(R.id.save_data);
+                savePref.setText(buf.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void createPreferences(View v) {
@@ -40,5 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void close(View view) {
         this.finish();
+        System.exit(0);
     }
 }
