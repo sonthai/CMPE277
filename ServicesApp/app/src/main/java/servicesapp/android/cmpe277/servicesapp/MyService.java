@@ -1,6 +1,7 @@
 package servicesapp.android.cmpe277.servicesapp;
 
 import java.net.URL;
+import java.util.Timer;
 
 import android.app.Service;
 import android.content.Intent;
@@ -15,6 +16,9 @@ public class MyService extends Service {
 	int counter = 0;
 	public URL[] urls;
 
+	static final int UPDATE_INTERVAL = 1000;
+	private Timer time = new Timer();
+
 	private final IBinder binder = new MyBinder();
 	
 	public class MyBinder extends Binder {
@@ -26,7 +30,6 @@ public class MyService extends Service {
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
-		//return null;
 		return binder;
 	}
 
@@ -69,8 +72,6 @@ public class MyService extends Service {
             long totalBytesDownloaded = 0;
             for (int i = 0; i < count; i++) {
                 totalBytesDownloaded += DownloadFile(urls[i]);
-                //---calculate precentage downloaded and 
-                // report its progress---
                 publishProgress((int) (((i+1) / (float) count) * 100));                
             }
             return totalBytesDownloaded;

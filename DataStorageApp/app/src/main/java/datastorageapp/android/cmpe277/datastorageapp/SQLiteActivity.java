@@ -58,7 +58,7 @@ public class SQLiteActivity extends AppCompatActivity {
         long retValue= dataController.insert(message);
         dataController.close();
 
-        if (retValue != 1) {
+        if (retValue != -1) {
             Context context = getApplicationContext();
             CharSequence text=getString(R.string.save_success_msg);
             Toast.makeText(context, text, Toast.LENGTH_LONG).show();

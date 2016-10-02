@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText pdf1, pdf2, pdf3, pdf4, pdf5;
     IntentFilter intentFilter;
     private MyService serviceBinder;
-    Intent i;
+    private URL[] urls;
 
 
     @Override
@@ -49,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
         pdf4 = (EditText) findViewById(R.id.pdf4_id);
         pdf5 = (EditText) findViewById(R.id.pdf5_id);
 
+        // Set up for testing only
+        pdf1.setText("https://www.cisco.com/web/about/ac79/docs/innov/IoE.pdf");
+        pdf2.setText("http://www.cisco.com/web/about/ac79/docs/innov/IoE_Economy.pdf");
+        pdf3.setText("http://www.cisco.com/web/strategy/docs/gov/everything-for-cities.pdf");
+        pdf4.setText("http://www.cisco.com/web/offer/gist_ty2_asset/Cisco_2014_ASR.pdf");
+        pdf5.setText("http://www.cisco.com/web/offer/emear/38586/images/Presentations/P3.pdf");
 
+
+        // This intent filter is used to get the broadcase sent back from MyIntentService bounded services
         intentFilter = new IntentFilter();
         intentFilter.addAction("FILE_DOWNLOADED_ACTION");
         registerReceiver(intentReceiver, intentFilter);
-
 
     }
 
@@ -65,40 +72,21 @@ public class MainActivity extends AppCompatActivity {
         String url5 = pdf5.getText().toString();
 
         Intent intent = new Intent(getBaseContext(), MyService.class);
+
+        // This is use for IntentService
+        //Intent intent = new Intent(getBaseContext(), MyIntentService.class);
         try {
-            //URL[] urls = new URL[] {new URL(url1), new URL(url2), new URL(url3), new URL(url4), new URL(url5)};
-            URL [] urls = new URL[] {
-                    new URL("https://www.cisco.com/web/about/ac79/docs/innov/IoE.pdf"),
-                    new URL("http://www.cisco.com/web/about/ac79/docs/innov/IoE_Economy.pdf"),
-                    new URL("http://www.cisco.com/web/strategy/docs/gov/everything-for-cities.pdf"),
-                    new URL("http://www.cisco.com/web/offer/gist_ty2_asset/Cisco_2014_ASR.pdf"),
-                    new URL ("http://www.cisco.com/web/offer/emear/38586/images/Presentations/P3.pdf")
-            };
+            urls = new URL[] {new URL(url1), new URL(url2), new URL(url3), new URL(url4), new URL(url5)};
             intent.putExtra("URLs", urls);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        startService(intent);
+
+        // This is unbounded service
+         startService(intent);
 
     }
-/*
-    private ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            serviceBinder = ((MyService.MyBinder) service).getService();
-            try {
-                //serviceBinder.urls = [];
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
 
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            serviceBinder = null;
-        }
-    };
-*/
     private BroadcastReceiver  intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
